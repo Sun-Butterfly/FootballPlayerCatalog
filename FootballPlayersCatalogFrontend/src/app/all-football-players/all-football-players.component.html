@@ -1,0 +1,28 @@
+<h1>{{title}}</h1>
+<h2>{{subtitle}}</h2>
+
+<div class="container">
+  <div class="leftside">
+    <div class="player" *ngFor="let player of footballPlayers; let i = index"
+
+         (click)="setActivePlayer(i)">
+      <div class="row">
+        <div class="index">{{player.id}}</div>
+        {{player.name + ' ' + player.lastName}}
+        <div class="delete"><button (click)="deleteFootballPlayer($event, i)">Удалить</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="rightside">
+    <div class="collapse" *ngIf="activePlayer !==-1">
+      <div class="info">
+        <p>Имя: {{ footballPlayers[activePlayer].name}}</p>
+        <p>Фамилия: {{footballPlayers[activePlayer].lastName}}</p>
+        <p>Пол: {{footballPlayers[activePlayer].gender}}</p>
+        <p>Дата рождения: {{footballPlayers[activePlayer].dateOfBirth | date:'mediumDate'}}</p>
+        <p>Страна: {{footballPlayers[activePlayer].country}}</p>
+        <p>Команда: {{footballPlayers[activePlayer].teamName}}</p>
+      </div>
+    </div>
+  </div>
+</div>

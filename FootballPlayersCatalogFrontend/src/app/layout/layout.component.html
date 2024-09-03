@@ -1,0 +1,17 @@
+<header>
+  <div class="title">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="tabs">
+    <div class="tab" (click)="goToAdd()" [class.active]="url==='/add'">Добавить футболиста</div>
+    <div class="tab" (click)="goToAll()" [class.active]="url==='/all'">Все футболисты</div>
+  </div>
+</header>
+<div class="main">
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<footer>
+  <div class="container"></div>
+</footer>

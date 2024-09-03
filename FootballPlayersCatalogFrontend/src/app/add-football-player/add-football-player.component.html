@@ -1,0 +1,28 @@
+<h1>{{title}}</h1>
+<div class="input-fields" [formGroup]="playerFormGroup">
+  <label>Имя</label>
+  <p><input type="text" size="40" formControlName="name"></p>
+  <label>Фамилия</label>
+  <p><input type="text" size="40" formControlName="lastName"></p>
+  <label>Пол</label>
+  <p><select formControlName="gender">
+    <option value="null" disabled>Выберите пол:</option>
+    <option *ngFor="let gender of genders" [value]="gender">{{gender}}</option>
+  </select></p>
+  <label>Дата рождения</label>
+  <p><input type="date" size="40" formControlName="dateOfBirth"></p>
+  <label>Страна</label>
+  <p><select formControlName="country">
+    <option value="null" disabled>Выберите страну:</option>
+    <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+  </select></p>
+  <label>Команда</label>
+  <p><input list="teamName" size="40" formControlName="teamName">
+    <datalist id="teamName">
+      <option *ngFor="let team of teams" [value]="team.name">{{team.name}}</option>
+    </datalist>
+  </p>
+  <p>
+    <button (click)="addFootballPlayer()">Добавить</button>
+  </p>
+</div>
