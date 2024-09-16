@@ -10,7 +10,7 @@
         <div class="index">{{player.id}}</div>
         {{player.name + ' ' + player.lastName}}
         <div class="delete"><button (click)="deleteFootballPlayer($event, i)">Удалить</button></div>
-        <div class="update"><button (click)="changeEditMode()">Редактировать</button></div>
+        <div class="update"><button (click)="changeEditMode(i)">Редактировать</button></div>
       </div>
     </div>
   </div>
@@ -24,8 +24,36 @@
         <p>Страна: {{footballPlayers[activePlayer].country}}</p>
         <p>Команда: {{footballPlayers[activePlayer].teamName}}</p>
       </div>
-      <div class="collapseEditInfo" *ngIf="editMode">
-<app-update-football-player></app-update-football-player>
+      <div class="collapseEditInfo" *ngIf="editMode && activePlayer!=-1">
+        <div class="redact">
+          <div class="input-fields" [formGroup]="playerFormGroup">
+            <label>Имя</label>
+            <p><input type="text" size="40" formControlName="name"></p>
+            <label>Фамилия</label>
+            <p><input type="text" size="40" formControlName="lastName" ></p>
+            <label>Пол</label>
+            <p><select formControlName="gender">
+              <option value="null" disabled>Выберите пол:</option>
+              <option *ngFor="let gender of genders">{{gender}}</option>
+            </select></p>
+            <label>Дата рождения</label>
+            <p><input type="date" size="40" formControlName="dateOfBirth" ></p>
+            <label>Страна</label>
+            <p><select formControlName="country">
+              <option value="null" disabled>Выберите страну:</option>
+              <option *ngFor="let country of countries">{{country}}</option>
+            </select></p>
+            <label>Команда</label>
+            <p><input list="teamName" size="40" formControlName="teamName" >
+              <datalist id="teamName">
+                <option *ngFor="let team of teams" [value]="team.name"></option>
+              </datalist>
+            </p>
+            <p>
+              <button (click)="updateFootballPlayer($event, footballPlayers[activePlayer].id)">Редактировать</button>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

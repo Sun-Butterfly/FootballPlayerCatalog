@@ -79,4 +79,23 @@ h2 {
   font-family: Impact, sans-serif;
   font-size: 150%;
   margin-left: 20px;
+  .input-fields{
+    color: #640505;
+    font-family: Impact, sans-serif;
+    text-align: center;
+    font-size: 50%;
+  }
+  select{
+    font: inherit;
+    letter-spacing: inherit;
+    word-spacing: inherit;
+  }
+  button{
+    margin-top: 20px;
+    font: inherit;
+    letter-spacing: inherit;
+    word-spacing: inherit;
+  }
 }
+
+
