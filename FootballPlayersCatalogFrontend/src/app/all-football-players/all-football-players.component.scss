@@ -61,6 +61,7 @@ h2 {
       display: flex;
       position: absolute;
       right: 0;
+
     }
     button{
       color: white;
@@ -68,9 +69,12 @@ h2 {
       font-size: 50%;
       background-color: #640505;
     }
+    .update{
+
+    }
   }
 }
-.collapse{
+.collapseInfo{
   color: #331010;
   font-family: Impact, sans-serif;
   font-size: 150%;

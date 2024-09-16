@@ -10,18 +10,22 @@
         <div class="index">{{player.id}}</div>
         {{player.name + ' ' + player.lastName}}
         <div class="delete"><button (click)="deleteFootballPlayer($event, i)">Удалить</button></div>
+        <div class="update"><button (click)="changeEditMode()">Редактировать</button></div>
       </div>
     </div>
   </div>
   <div class="rightside">
-    <div class="collapse" *ngIf="activePlayer !==-1">
-      <div class="info">
+    <div class="collapseInfo" *ngIf="activePlayer !==-1">
+      <div class="info" *ngIf="!editMode">
         <p>Имя: {{ footballPlayers[activePlayer].name}}</p>
         <p>Фамилия: {{footballPlayers[activePlayer].lastName}}</p>
         <p>Пол: {{footballPlayers[activePlayer].gender}}</p>
         <p>Дата рождения: {{footballPlayers[activePlayer].dateOfBirth | date:'mediumDate'}}</p>
         <p>Страна: {{footballPlayers[activePlayer].country}}</p>
         <p>Команда: {{footballPlayers[activePlayer].teamName}}</p>
+      </div>
+      <div class="collapseEditInfo" *ngIf="editMode">
+<app-update-football-player></app-update-football-player>
       </div>
     </div>
   </div>

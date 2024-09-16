@@ -56,4 +56,9 @@ export class HttpService {
       }
     });
   }
+
+  updateFootballPlayer(footballPlayer: FootballPlayer): Observable<void> {
+    const url:string=`${this.baseUrl}/FootballPlayer/Update`
+    return this.http.post<void>(url, footballPlayer);
+  }
 }
