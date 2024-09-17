@@ -10,12 +10,12 @@
         <div class="index">{{player.id}}</div>
         {{player.name + ' ' + player.lastName}}
         <div class="delete"><button (click)="deleteFootballPlayer($event, i)">Удалить</button></div>
-        <div class="update"><button (click)="changeEditMode(i)">Редактировать</button></div>
+        <div class="update"><button (click)="changeEditMode($event, i)">Редактировать</button></div>
       </div>
     </div>
   </div>
   <div class="rightside">
-    <div class="collapseInfo" *ngIf="activePlayer !==-1">
+    <div class="collapseInfo" *ngIf="activePlayer !=-1">
       <div class="info" *ngIf="!editMode">
         <p>Имя: {{ footballPlayers[activePlayer].name}}</p>
         <p>Фамилия: {{footballPlayers[activePlayer].lastName}}</p>
@@ -37,7 +37,7 @@
               <option *ngFor="let gender of genders">{{gender}}</option>
             </select></p>
             <label>Дата рождения</label>
-            <p><input type="date" size="40" formControlName="dateOfBirth" ></p>
+            <p><input type="date" size="40" formControlName="dateOfBirth"></p>
             <label>Страна</label>
             <p><select formControlName="country">
               <option value="null" disabled>Выберите страну:</option>
@@ -51,6 +51,7 @@
             </p>
             <p>
               <button (click)="updateFootballPlayer($event, footballPlayers[activePlayer].id)">Редактировать</button>
+              <button (click)="changeEditMode($event, footballPlayers[activePlayer].id)">Отмена</button>
             </p>
           </div>
         </div>
